@@ -1,8 +1,8 @@
-import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
-import TestCases from '../pages/TestCases';
-import Issues from '../pages/Issues';
-import Reports from '../pages/Reports';
+import HomePage from '@/components/pages/HomePage';
+import DashboardPage from '@/components/pages/DashboardPage';
+import TestCasesPage from '@/components/pages/TestCasesPage';
+import IssuesPage from '@/components/pages/IssuesPage';
+import ReportsPage from '@/components/pages/ReportsPage';
 
 export const routes = {
   home: {
@@ -10,35 +10,35 @@ export const routes = {
     label: 'Home',
     path: '/',
     icon: 'Home',
-    component: Home
+component: HomePage
   },
   dashboard: {
     id: 'dashboard',
     label: 'Dashboard',
     path: '/dashboard',
     icon: 'LayoutDashboard',
-    component: Dashboard
+component: DashboardPage
   },
   testCases: {
     id: 'testCases',
     label: 'Test Cases',
     path: '/test-cases',
     icon: 'FileCheck',
-    component: TestCases
+component: TestCasesPage
   },
   issues: {
     id: 'issues',
     label: 'Issues',
     path: '/issues',
     icon: 'Bug',
-    component: Issues
+component: IssuesPage
   },
   reports: {
     id: 'reports',
     label: 'Reports',
     path: '/reports',
     icon: 'BarChart3',
-    component: Reports
+component: ReportsPage
   }
 };
 

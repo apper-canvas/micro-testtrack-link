@@ -46,3 +46,70 @@ export const formatStatus = (status) => {
     if (!status) return 'Not Run';
     return status.charAt(0).toUpperCase() + status.slice(1).replace('_', ' ');
 };
+
+export const getTreeNodeStatus = (testCases, folder) => {
+    if (!folder || !folder.testCaseIds || folder.testCaseIds.length === 0) {
+        return 'empty';
+    }
+    
+    const folderTestCases = testCases.filter(tc => folder.testCaseIds.includes(tc.id));
+    const statusCounts = folderTestCases.reduce((acc, tc) => {
+        const status = tc.lastRunStatus || 'not_run';
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+    }, {});
+    
+    if (statusCounts.failed > 0) return 'failed';
+    if (statusCounts.passed === folderTestCases.length) return 'passed';
+    if (statusCounts.passed > 0) return 'partial';
+    return 'not_run';
+};
+
+export const getFolderTestCaseStats = (testCases, folder) => {
+    if (!folder || !folder.testCaseIds) {
+        return { total: 0, passed: 0, failed: 0, notRun: 0 };
+    }
+    
+    const folderTestCases = testCases.filter(tc => folder.testCaseIds.includes(tc.id));
+    
+    return folderTestCases.reduce((stats, tc) => {
+        stats.total++;
+        const status = tc.lastRunStatus || 'not_run';
+        
+        switch (status) {
+            case 'passed':
+                stats.passed++;
+                break;
+            case 'failed':
+                stats.failed++;
+                break;
+            default:
+                stats.notRun++;
+                break;
+        }
+        
+        return stats;
+    }, { total: 0, passed: 0, failed: 0, notRun: 0 });
+};
+
+export const buildTreeStructure = (folders, rootFolderIds, testCases) => {
+    const folderMap = new Map(folders.map(f => [f.id, { ...f, children: [] }]));
+    const tree = [];
+    
+    // Build hierarchy
+    folders.forEach(folder => {
+        const folderNode = folderMap.get(folder.id);
+        if (folder.parentId && folderMap.has(folder.parentId)) {
+            folderMap.get(folder.parentId).children.push(folderNode);
+        }
+    });
+    
+    // Add root folders to tree
+    rootFolderIds.forEach(id => {
+        if (folderMap.has(id)) {
+            tree.push(folderMap.get(id));
+        }
+    });
+    
+    return tree;
+};

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
-import { testCaseService, testRunService } from '@/services';
+import { testCaseService, testRunService, treeService } from '@/services';
 import Button from '@/components/atoms/Button';
 import Card from '@/components/atoms/Card';
 import EmptyState from '@/components/atoms/EmptyState';
@@ -11,6 +11,7 @@ import Modal from '@/components/molecules/Modal';
 import CreateTestCaseForm from '@/components/organisms/CreateTestCaseForm';
 import ExecuteTestForm from '@/components/organisms/ExecuteTestForm';
 import TestCasesList from '@/components/organisms/TestCasesList';
+import TreeView from '@/components/organisms/TreeView';
 
 const TestCasesPage = () => {
     const [testCases, setTestCases] = useState([]);
@@ -20,12 +21,12 @@ const TestCasesPage = () => {
     const [showCreateForm, setShowCreateForm] = useState(false);
     const [showExecuteModal, setShowExecuteModal] = useState(false);
     const [selectedTestCase, setSelectedTestCase] = useState(null);
+    const [viewMode, setViewMode] = useState('list'); // 'list' or 'tree'
     const [filters, setFilters] = useState({
         priority: 'all',
         status: 'all',
         search: ''
     });
-
     useEffect(() => {
         loadTestCases();
     }, []);
@@ -74,9 +75,17 @@ const TestCasesPage = () => {
         setFilters({ priority: 'all', status: 'all', search: '' });
     };
 
-    const handleCreateTestCase = async (formData) => {
+const handleCreateTestCase = async (formData) => {
         try {
             const newTestCase = await testCaseService.create(formData);
+            
+            // Check if a target folder was specified
+            const targetFolderId = sessionStorage.getItem('targetFolderId');
+            if (targetFolderId) {
+                await treeService.moveTestCaseToFolder(newTestCase.id, targetFolderId);
+                sessionStorage.removeItem('targetFolderId');
+            }
+            
             setTestCases([...testCases, newTestCase]);
             setShowCreateForm(false);
             toast.success('Test case created successfully');
@@ -161,8 +170,34 @@ const TestCasesPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
             >
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                    <h1 className="text-2xl font-bold text-surface-900">Test Cases</h1>
+<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <div className="flex items-center gap-4">
+                        <h1 className="text-2xl font-bold text-surface-900">Test Cases</h1>
+                        <div className="flex bg-surface-100 rounded-lg p-1">
+                            <Button
+                                size="sm"
+                                variant={viewMode === 'list' ? 'primary' : 'ghost'}
+                                onClick={() => setViewMode('list')}
+                                icon={ApperIcon}
+                                iconName="List"
+                                iconSize={16}
+                                className="px-3 py-1.5"
+                            >
+                                List
+                            </Button>
+                            <Button
+                                size="sm"
+                                variant={viewMode === 'tree' ? 'primary' : 'ghost'}
+                                onClick={() => setViewMode('tree')}
+                                icon={ApperIcon}
+                                iconName="TreePine"
+                                iconSize={16}
+                                className="px-3 py-1.5"
+                            >
+                                Tree
+                            </Button>
+                        </div>
+                    </div>
                     <Button
                         onClick={() => setShowCreateForm(true)}
                         icon={ApperIcon}
@@ -171,8 +206,7 @@ const TestCasesPage = () => {
                         Create Test Case
                     </Button>
                 </div>
-
-                <FilterControls
+<FilterControls
                     filters={filters}
                     setFilters={setFilters}
                     clearFilters={clearFilters}
@@ -180,12 +214,21 @@ const TestCasesPage = () => {
                     searchPlaceholder="Search test cases..."
                 />
 
-                <TestCasesList
-                    testCases={testCases}
-                    filteredTestCases={filteredTestCases}
-                    onExecuteTest={handleOpenExecuteModal}
-                    onShowCreateForm={() => setShowCreateForm(true)}
-                />
+                {viewMode === 'list' ? (
+                    <TestCasesList
+                        testCases={testCases}
+                        filteredTestCases={filteredTestCases}
+                        onExecuteTest={handleOpenExecuteModal}
+                        onShowCreateForm={() => setShowCreateForm(true)}
+                    />
+                ) : (
+                    <TreeView
+                        testCases={testCases}
+                        filteredTestCases={filteredTestCases}
+                        onExecuteTest={handleOpenExecuteModal}
+                        onShowCreateForm={() => setShowCreateForm(true)}
+                    />
+                )}
             </motion.div>
 
             <Modal

@@ -1,0 +1,56 @@
+{
+  "folders": [
+    {
+      "id": "folder_1",
+      "name": "Authentication Tests",
+      "parentId": null,
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z",
+      "expanded": true,
+      "testCaseIds": ["tc_1", "tc_2"],
+      "childFolderIds": ["folder_3"]
+    },
+    {
+      "id": "folder_2",
+      "name": "Payment Processing",
+      "parentId": null,
+      "createdAt": "2024-01-16T14:00:00Z",
+      "updatedAt": "2024-01-16T14:00:00Z",
+      "expanded": false,
+      "testCaseIds": ["tc_3", "tc_4", "tc_5"],
+      "childFolderIds": []
+    },
+    {
+      "id": "folder_3",
+      "name": "Login Scenarios",
+      "parentId": "folder_1",
+      "createdAt": "2024-01-17T09:00:00Z",
+      "updatedAt": "2024-01-17T09:00:00Z",
+      "expanded": true,
+      "testCaseIds": ["tc_6"],
+      "childFolderIds": []
+    },
+    {
+      "id": "folder_4",
+      "name": "API Tests",
+      "parentId": null,
+      "createdAt": "2024-01-18T11:00:00Z",
+      "updatedAt": "2024-01-18T11:00:00Z",
+      "expanded": true,
+      "testCaseIds": ["tc_7", "tc_8"],
+      "childFolderIds": ["folder_5"]
+    },
+    {
+      "id": "folder_5",
+      "name": "REST Endpoints",
+      "parentId": "folder_4",
+      "createdAt": "2024-01-19T16:00:00Z",
+      "updatedAt": "2024-01-19T16:00:00Z",
+      "expanded": false,
+      "testCaseIds": ["tc_9", "tc_10"],
+      "childFolderIds": []
+    }
+  ],
+  "rootFolderIds": ["folder_1", "folder_2", "folder_4"],
+  "unassignedTestCaseIds": []
+}

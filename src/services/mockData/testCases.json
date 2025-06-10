@@ -1,0 +1,82 @@
+[
+  {
+    "id": "tc_001",
+    "title": "User Login with Valid Credentials",
+    "description": "Verify that users can successfully log in with valid username and password",
+    "steps": [
+      "Navigate to the login page",
+      "Enter valid username",
+      "Enter valid password",
+      "Click Login button"
+    ],
+    "expectedResult": "User should be successfully logged in and redirected to dashboard",
+    "priority": "high",
+    "lastRunStatus": "passed",
+    "createdAt": "2024-01-15T09:00:00.000Z",
+    "updatedAt": "2024-01-20T14:30:00.000Z"
+  },
+  {
+    "id": "tc_002",
+    "title": "User Registration Form Validation",
+    "description": "Test form validation for user registration with invalid inputs",
+    "steps": [
+      "Navigate to registration page",
+      "Leave email field empty",
+      "Enter weak password",
+      "Submit form"
+    ],
+    "expectedResult": "Appropriate validation errors should be displayed for each invalid field",
+    "priority": "medium",
+    "lastRunStatus": "failed",
+    "createdAt": "2024-01-16T10:15:00.000Z",
+    "updatedAt": "2024-01-18T16:45:00.000Z"
+  },
+  {
+    "id": "tc_003",
+    "title": "Product Search Functionality",
+    "description": "Verify that product search returns relevant results",
+    "steps": [
+      "Open product search page",
+      "Enter product name in search box",
+      "Click search button",
+      "Review search results"
+    ],
+    "expectedResult": "Search results should display products matching the search criteria",
+    "priority": "high",
+    "lastRunStatus": "passed",
+    "createdAt": "2024-01-17T11:30:00.000Z",
+    "updatedAt": "2024-01-21T09:15:00.000Z"
+  },
+  {
+    "id": "tc_004",
+    "title": "Shopping Cart Add Item",
+    "description": "Test adding items to shopping cart",
+    "steps": [
+      "Browse to product page",
+      "Select product quantity",
+      "Click 'Add to Cart' button",
+      "Navigate to cart page"
+    ],
+    "expectedResult": "Selected product should appear in cart with correct quantity and price",
+    "priority": "high",
+    "lastRunStatus": "blocked",
+    "createdAt": "2024-01-18T13:20:00.000Z",
+    "updatedAt": "2024-01-19T15:00:00.000Z"
+  },
+  {
+    "id": "tc_005",
+    "title": "Password Reset Email",
+    "description": "Verify password reset email functionality",
+    "steps": [
+      "Click 'Forgot Password' link",
+      "Enter registered email address",
+      "Submit reset request",
+      "Check email inbox"
+    ],
+    "expectedResult": "Password reset email should be received within 5 minutes",
+    "priority": "medium",
+    "lastRunStatus": null,
+    "createdAt": "2024-01-19T14:45:00.000Z",
+    "updatedAt": "2024-01-19T14:45:00.000Z"
+  }
+]

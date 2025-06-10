@@ -1,0 +1,58 @@
+[
+  {
+    "id": "run_001",
+    "testCaseId": "tc_001",
+    "status": "passed",
+    "notes": "Login functionality working correctly across all browsers",
+    "executedAt": "2024-01-20T14:30:00.000Z",
+    "executedBy": "John Smith"
+  },
+  {
+    "id": "run_002",
+    "testCaseId": "tc_002",
+    "status": "failed",
+    "notes": "Email validation not working properly - accepts invalid email formats",
+    "executedAt": "2024-01-18T16:45:00.000Z",
+    "executedBy": "Sarah Johnson"
+  },
+  {
+    "id": "run_003",
+    "testCaseId": "tc_003",
+    "status": "passed",
+    "notes": "Search functionality returns accurate results with good performance",
+    "executedAt": "2024-01-21T09:15:00.000Z",
+    "executedBy": "Mike Davis"
+  },
+  {
+    "id": "run_004",
+    "testCaseId": "tc_004",
+    "status": "blocked",
+    "notes": "Cannot test due to shopping cart service being down for maintenance",
+    "executedAt": "2024-01-19T15:00:00.000Z",
+    "executedBy": "Lisa Chen"
+  },
+  {
+    "id": "run_005",
+    "testCaseId": "tc_001",
+    "status": "passed",
+    "notes": "Retested after recent deployment - all features working as expected",
+    "executedAt": "2024-01-22T10:20:00.000Z",
+    "executedBy": "John Smith"
+  },
+  {
+    "id": "run_006",
+    "testCaseId": "tc_003",
+    "status": "failed",
+    "notes": "Search results taking too long to load - performance issue detected",
+    "executedAt": "2024-01-17T13:30:00.000Z",
+    "executedBy": "Sarah Johnson"
+  },
+  {
+    "id": "run_007",
+    "testCaseId": "tc_002",
+    "status": "passed",
+    "notes": "Form validation fixes have been implemented and are working correctly",
+    "executedAt": "2024-01-23T11:45:00.000Z",
+    "executedBy": "Mike Davis"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "issue_001",
+    "title": "Login button not responding on mobile devices",
+    "description": "The login button becomes unresponsive on mobile devices after entering credentials. Users cannot complete the login process.",
+    "severity": "high",
+    "status": "in_progress",
+    "category": "Mobile UI",
+    "reproductionSteps": "1. Open app on mobile device\n2. Navigate to login page\n3. Enter valid credentials\n4. Tap login button\n5. Button appears pressed but no action occurs",
+    "attachments": [],
+    "reportedAt": "2024-01-20T10:30:00.000Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "issue_002",
+    "title": "Search results showing incorrect product prices",
+    "description": "Product search results display outdated prices that don't match the actual product page prices.",
+    "severity": "medium",
+    "status": "new",
+    "category": "Data Consistency",
+    "reproductionSteps": "1. Search for any product\n2. Note the price in search results\n3. Click on product to view details\n4. Compare prices between search and product page",
+    "attachments": [],
+    "reportedAt": "2024-01-21T14:15:00.000Z",
+    "resolvedAt": null
+  },
+  {
+    "id": "issue_003",
+    "title": "Database connection timeout during peak hours",
+    "description": "Users experience timeout errors when trying to access the application during peak traffic hours (12-2 PM and 6-8 PM).",
+    "severity": "critical",
+    "status": "fixed",
+    "category": "Performance",
+    "reproductionSteps": "1. Access application during peak hours\n2. Attempt to load any page\n3. Connection timeout error appears after 30 seconds",
+    "attachments": [],
+    "reportedAt": "2024-01-18T13:45:00.000Z",
+    "resolvedAt": "2024-01-22T16:30:00.000Z"
+  },
+  {
+    "id": "issue_004",
+    "title": "Email notifications not sent for order confirmations",
+    "description": "Customers are not receiving email confirmations after placing orders, though orders are processed successfully.",
+    "severity": "medium",
+    "status": "verified",
+    "category": "Email System",
+    "reproductionSteps": "1. Complete a product purchase\n2. Wait for order confirmation email\n3. Check email inbox and spam folder\n4. No email received within expected timeframe",
+    "attachments": [],
+    "reportedAt": "2024-01-19T09:20:00.000Z",
+    "resolvedAt": "2024-01-23T11:15:00.000Z"
+  },
+  {
+    "id": "issue_005",
+    "title": "Cart items disappear after page refresh",
+    "description": "Shopping cart contents are lost when users refresh the page or navigate away and return.",
+    "severity": "high",
+    "status": "new",
+    "category": "Session Management",
+    "reproductionSteps": "1. Add items to shopping cart\n2. Refresh the page\n3. Check cart contents\n4. Items are no longer present",
+    "attachments": [],
+    "reportedAt": "2024-01-22T11:00:00.000Z",
+    "resolvedAt": null
+  }
+]

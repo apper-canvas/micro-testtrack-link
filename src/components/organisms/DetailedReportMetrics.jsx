@@ -67,30 +67,33 @@ const DetailedReportMetrics = ({ reportData }) => {
                         </div>
                         <span className="font-semibold text-surface-900">{reportData.issues.high}</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        <span className="text-surface-700">Medium Priority</span>
+<div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <span className="text-surface-700">Medium Priority</span>
+                        </div>
+                        <span className="font-semibold text-surface-900">{reportData.issues.medium}</span>
                     </div>
-                    <span className="font-semibold text-surface-900">{reportData.issues.medium}</span>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span className="text-surface-700">Low Priority</span>
+                        </div>
+                        <span className="font-semibold text-surface-900">{reportData.issues.low}</span>
+                    </div>
                 </div>
-                <div className="flex items-center justify-between">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-surface-700">Low Priority</span>
-                </div>
-                <span className="font-semibold text-surface-900">{reportData.issues.low}</span>
-            </div>
-            <div className="border-t border-surface-200 pt-4">
-                <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-surface-900">Open Issues</span>
-                    <span className="font-bold text-red-600">{reportData.issues.open}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                    <span className="font-medium text-surface-900">Resolved Issues</span>
-                    <span className="font-bold text-green-600">{reportData.issues.resolved}</span>
-                </div>
-            </div>
-        </Card>
-    </div>
+                <div className="border-t border-surface-200 pt-4">
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="font-medium text-surface-900">Open Issues</span>
+                        <span className="font-bold text-red-600">{reportData.issues.open}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <span className="font-medium text-surface-900">Resolved Issues</span>
+                        <span className="font-bold text-green-600">{reportData.issues.resolved}</span>
+                    </div>
+</div>
+            </Card>
+        </div>
     );
 };
 
